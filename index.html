@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foodie</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <h1>Foodie</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-text">
+    <h2>Delicious Food Delivered Fast</h2>
+    <p>Order your favorite meals anytime, anywhere</p>
+    <button onclick="scrollToMenu()">Order Now</button>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search food..." onkeyup="searchFood()">
+</div>
+
+<!-- MENU -->
+<section id="menu" class="menu">
+  <h2>Popular Dishes</h2>
+
+  <p id="noResult">No food items found</p>
+
+  <div class="menu-items">
+
+    <div class="card">
+      <img src="images/biriyani.jpg">
+      <h3>Biryani</h3>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="images/burger.jpg">
+      <h3>Burger</h3>
+      <p>⭐⭐⭐⭐⭐</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="images/pizza.jpg">
+      <h3>Pizza</h3>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="images/chicken.jpg">
+      <h3>Fried Chicken</h3>
+      <p>⭐⭐⭐⭐⭐</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="images/dosa.jpg">
+      <h3>Dosa</h3>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="images/icecream.jpg">
+      <h3>Ice Cream</h3>
+      <p>⭐⭐⭐⭐⭐</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">
+    <h3>⚡ Fast Delivery</h3>
+    <p>Under 30 minutes</p>
+  </div>
+  <div class="feature">
+    <h3>🍽 Quality Food</h3>
+    <p>Fresh & hygienic</p>
+  </div>
+  <div class="feature">
+    <h3>💳 Easy Payment</h3>
+    <p>Secure options</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>Email: foodie@email.com</p>
+  <p>Phone: +91 9876543210</p>
+</section>
+
+<footer>
+  <p>© 2026 Foodie</p>
+</footer>
+
+<script>
+function scrollToMenu() {
+  const menu = document.getElementById("menu");
+  const offset = 80;
+
+  const top = menu.offsetTop - offset;
+
+  window.scrollTo({
+    top: top,
+    behavior: "smooth"
+  });
+}
+
+function searchFood() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
+  let found = false;
+
+  cards.forEach(card => {
+    let text = card.innerText.toLowerCase();
+
+    if (text.includes(input)) {
+      card.style.display = "block";  // ✅ FIXED
+      found = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  document.getElementById("noResult").style.display = found ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
